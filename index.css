@@ -1,0 +1,101 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: goldenrod;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-weight: 600;
+    color: #3e3e3e;
+  }
+  
+  .btn-info {
+    background-color: #6c63ff;
+    border: none;
+    color: white;
+    /* transition: background 0.3s ease; */
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+  }
+  
+  .btn-info:hover {
+    background-color: #5848e5;
+  }
+  
+  .search-input {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+  }
+  
+  .nav-tabs .nav-link {
+    color: #6c63ff;
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-tabs .nav-link.active {
+    background-color: #e8e6fd;
+    border-color: transparent;
+    color: #3e3e3e;
+  }
+  
+  #bookList .card,
+  #favoriteList .card,
+  #unreadList .card,
+  #readList .card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+
+  .modal-content {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .form-control,
+  .form-select {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #6c63ff;
+    box-shadow: none;
+  }
+  
+
+  #addBookButton,
+  #bookForm button[type="submit"] {
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+     padding: 10px;
+    /* /transition: background 0.3s ease; */ 
+  }
+  
+  #addBookButton:hover,
+  #bookForm button[type="submit"]:hover {
+    background-color: #5848e5;
+  }
+
+  
