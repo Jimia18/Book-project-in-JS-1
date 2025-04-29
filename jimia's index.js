@@ -1,3 +1,4 @@
+
 // References to elements
 const bookForm = document.getElementById("bookForm");
 const bookList = document.getElementById("bookList");
@@ -19,8 +20,6 @@ document.getElementById("bookForm").addEventListener("submit", function (event) 
   const genre = document.getElementById("genre").value.trim();
   const status = document.getElementById("status").value;
   const imageInput = document.getElementById("image");
-
-  
 
   // Validate required values
   if (!title || !author || !genre) {
@@ -81,10 +80,14 @@ function openEditBookModal(bookId) {
   let books = JSON.parse(localStorage.getItem("books")) || [];
   let book = books.find(b => b.id === bookId);
 
-  if (!book) {
-    console.error("Book not found!");
-    return;
-  }
+//   if (!book) {
+//     window.alert("Book not found!");
+//     return;
+//   }
+//   if (book){
+//     window.alert('book found!');
+//     return;
+//   }
 
   // Open modal
   let modalElement = document.getElementById("addBookModal");
@@ -144,13 +147,13 @@ function toggleFavorite(bookId) {
 // Create book card
 function createBookCard(book) {
   const card = document.createElement("div");
-  card.className = "col-md-3 mb-3 book-card";
+  card.className = "col-md-3 mb-3";
   card.innerHTML = `
     <div class="card shadow-sm">
       <img src="${book.image || "cover-placeholder.jpg"}" class="card-img-top" alt="Book Cover">
       <div class="card-body">
-          <h5 class="card-title book-title">${book.title}</h5>
-          <p class="card-text book-author">Author: ${book.author}</p>
+          <h5 class="card-title">${book.title}</h5>
+          <p class="card-text">Author: ${book.author}</p>
           <p class="card-text"><small>Genre: ${book.genre}</small></p>
           <p class="card-text"><small>Status: ${book.status}</small></p>
           <button class="btn btn-sm btn-danger" onclick="deleteBook('${book.id}')">Delete</button>
@@ -171,63 +174,33 @@ function deleteBook(bookId) {
   books = books.filter((book) => book.id !== bookId);
   localStorage.setItem("books", JSON.stringify(books));
   loadBooks();
-}
 
-function searchBooks(input) {
-  const query = input.value.toLowerCase().trim();
-  const books = document.querySelectorAll('#bookList .book-card');
-
-  bookCards.forEach(card => {
-           const title = card.querySelector('.book-title').textContent.toLowerCase();
-           const author = card.querySelector('.book-author').textContent.toLowerCase();
-
-           if (title.includes(query) || author.includes(query)) {
-                     card.style.display = 'block'; // Show match
-                   } else {
-                     card.style.display = 'none'; // Hide non-match
-                   }
-                 });
-
-
-      
-
-  // filter book based  on search query
-  const filteredBooks = books.filter(book =>
-    book.title.toLowerCase().includes(query) ||
-    book.author.toLowerCase().includes(query)
-  ); 
-  bookList.innerHTML = '';
-
-  filteredBooks.forEach(book =>{
-    bookList.appendChild(createBookCard(book));
-
-  });
-
-  if (filteredBooks.length === 0) {
-    bookList.innerHTML = `,p class ='text-center text-muted'>No books found</p>`;
+  if (books){
+    window.alert('are you sure you want to delete this book');
+    return; 
   }
 }
 
-//      
-//   }
-  
+function searchBooks(input) {
+  let query = input.value.toLowerCase().trim();
+  let books = JSON.parse(localStorage.getItem("books")) || [];
 
-//   // Filter books based on search query
-//   let filteredBooks = books.filter(book => 
-//     book.title.toLowerCase().includes(query) || 
-//     book.author.toLowerCase().includes(query)
-//   );
+  // Filter books based on search query
+  let filteredBooks = books.filter(book => 
+    book.title.toLowerCase().includes(query) || 
+    book.author.toLowerCase().includes(query)
+  );
 
-//   // Clear and update book list with search results
-//   let bookList = document.getElementById("bookList"); 
-//   bookList.innerHTML = ""; // Clear current list
+  // Clear and update book list with search results
+  let bookList = document.getElementById("bookList"); 
+  bookList.innerHTML = ""; // Clear current list
 
-//   filteredBooks.forEach(book => {
-//     bookList.appendChild(createBookCard(book));
-//   });
+  filteredBooks.forEach(book => {
+    bookList.appendChild(createBookCard(book));
+  });
 
-//   // If no books match, show a "No results found" message
-//   if (filteredBooks.length === 0) {
-//     bookList.innerHTML = `<p class="text-center text-muted">No books found</p>`;
-//   }
-// }
+  // If no books match, show a "No results found" message
+  if (filteredBooks.length === 0) {
+    bookList.innerHTML = `<p class="text-center text-muted">No books found</p>`;
+  }
+}

@@ -2,13 +2,18 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background-color: goldenrod;
     padding: 20px;
+
+  }
+  header{
+    background-color: aqua;
+    margin-bottom: 20px;
   }
   
   h2 {
     font-weight: 600;
     color: #3e3e3e;
   }
-  
+
   .btn-info {
     background-color: #6c63ff;
     border: none;
